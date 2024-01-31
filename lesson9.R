@@ -1,28 +1,28 @@
-## the codes below is for finding the mean of vector
+## the codes below are for finding the mean of a vector
 makeCacheMatrix <- function(x = matrix()) {
-  j <- NULL
+  m <- NULL
   set <- function(y){
     x <<- y
-    j <<- NULL
+    m <<- NULL
   }
   get <- function()x
-  setInverse <- function(inverse) j <<- inverse
-  getInverse <- function() j 
+  setInverse <- function(inverse) m <<- inverse
+  getInverse <- function() m 
   list(set = set, get = get, 
        setInverse = setInverse, 
        getInverse = getInverse)
 }
 
-##the codes below is the one to find the inverse of the inverse of matrix
+##the codes below are the ones to find the inverse of the inverse of matrix
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
-  j <- x$getInverse()
-  if(!is.null(j)){
+  m <- x$getInverse()
+  if(!is.null(m)){
     message("getting cached data")
-    return(j)
+    return(m)
   }
   mat <- x$get()
-  j <- solve(mat,...)
-  x$setInverse(j)
-  j
+  m <- solve(mat,...)
+  x$setInverse(m)
+  m
 }
